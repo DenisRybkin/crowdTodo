@@ -43,9 +43,9 @@ public class AddLayout extends HorizontalLayout {
         textField.setPlaceholder("Need to do...");
         textField.setWidthFull();
         textField.setValueChangeMode(ValueChangeMode.EAGER);
-        textField.addInputListener(e -> {
-           if(e.getSource().getElement().getText().isEmpty()) button.setDisableOnClick(true);
-           else button.setDisableOnClick(true);
+        textField.addValueChangeListener(e -> {
+            if (e.getValue().isEmpty()) button.setEnabled(false);
+            else button.setEnabled(true);
         });
 
         dataPicker.setClearButtonVisible(true);
@@ -60,7 +60,7 @@ public class AddLayout extends HorizontalLayout {
         select.setValue(TodoPriority.NORMAL);
 
         button.addClickShortcut(Key.ENTER);
-        button.setDisableOnClick(true);
+        button.setEnabled(false);
         button.setIcon(new Icon(VaadinIcon.PLUS));
     }
 
